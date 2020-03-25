@@ -21,7 +21,12 @@ public class GrowthData {
 		datasets = growthValues.size();
 	}
 	
-	public boolean isGrowthIncreasing() {
+	/**
+	 * Iterate through growthValues and check whether values are increasing or not
+	 * 
+	 * @return whether growth is increasing based on dataset values
+	 */
+	public boolean isGrowing() {
 		if (datasets < 2) {
 			return false;
 		}
@@ -31,11 +36,12 @@ public class GrowthData {
 			if (prev >= curr) {
 				return false;
 			} else {
-				prev = growthValues.get(i);
+				prev = curr;
 			}
 		}
 		return true;
 	}
+	
 	
 	public static void main(String args[]) {
 		
