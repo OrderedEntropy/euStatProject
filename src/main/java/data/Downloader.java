@@ -1,17 +1,21 @@
 package data;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Paths;
 
+
+import org.apache.commons.io.FileUtils;
 public class Downloader {
-	private File f;
-	
-	public File getFile(String st) throws MalformedURLException, URISyntaxException {
-		URL url = new URL(st);
-		f = Paths.get(url.toURI().getPath()).toFile();
-		return f;
+
+	public void getFile(String url, String name) {
+		try {
+			FileUtils.copyURLToFile(new URL(url), new File("src/main/resources/" + name));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
